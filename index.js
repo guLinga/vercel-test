@@ -3,6 +3,7 @@ const axios = require('axios')
 const app = express()
 var cors = require('cors')
 app.use(cors())
+app.options('*', cors())
 
 const port = 4000
 
@@ -37,5 +38,3 @@ app.get('/test', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-module.exports = app
