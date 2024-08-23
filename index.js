@@ -1,9 +1,33 @@
 const express = require('express')
+const axios = require('axios')
 const app = express()
+var cors = require('cors')
+app.use(cors())
+
 const port = 4000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.get('/', async (req, res) => {
+  try {
+    const data = await axios({
+      url: 'https://api.notion.com/v1/databases/c1f91f1dd43248819b6e58193177aae0/query',
+      method: 'POST',
+      headers: {
+        Authorization:
+          'Bearer secret_1UF9i8rNjcWQGyhMm9Mo3fmuZCcQbUlMEeVGaZMCrf1',
+        'Notion-Version': '2022-06-28',
+      },
+    })
+    console.log('data', data.data)
+    res.send({
+      title: 'Hello World!',
+      data: data.data,
+    })
+  } catch (error) {
+    res.send({
+      title: 'Hello World!',
+      error,
+    })
+  }
 })
 
 app.get('/test', (req, res) => {
