@@ -8,6 +8,7 @@ app.options('*', cors())
 const port = 4000
 
 app.get('/', async (req, res) => {
+  console.log('/ 进入执行')
   try {
     const data = await axios({
       url: 'https://api.notion.com/v1/databases/c1f91f1dd43248819b6e58193177aae0/query',
@@ -24,6 +25,8 @@ app.get('/', async (req, res) => {
       data: data.data,
     })
   } catch (error) {
+    console.log('error', error)
+
     res.send({
       title: 'Hello World!',
       error,
@@ -32,6 +35,7 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/test', (req, res) => {
+  console.log('/test 进入执行')
   res.send('Hello World! test')
 })
 
