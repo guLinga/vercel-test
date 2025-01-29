@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "wechaty": "^1.20.2",
-    "wechaty-grpc": "^1.0.1"
+    "wechaty-grpc": "^1.0.1",
+    "wechaty-puppet-service": "^1.18.2"
   }
 }
