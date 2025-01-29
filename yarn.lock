@@ -3409,6 +3409,15 @@ wechat4u@^0.7.14:
     lodash "^4.17.11"
     mime "^1.3.4"
 
+wechaty-grpc@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.npmmirror.com/wechaty-grpc/-/wechaty-grpc-1.0.1.tgz#9c0c1fe3130ccd3fbcb1f79d65a6a5aea6f347eb"
+  integrity sha512-a7mvz5DOz6qsbW1HI3mTv3HROJzxaP5gGJk1GVa5KjwVta4iSd7XzN8NNKrr8RoVjEtsPTXiZpW5HqhZjSfH2Q==
+  dependencies:
+    "@grpc/grpc-js" "^1.3.7"
+    google-protobuf "^3.18.0"
+    stronger-typed-streams "^0.2.0"
+
 wechaty-grpc@^1.5.2:
   version "1.5.2"
   resolved "https://registry.npmmirror.com/wechaty-grpc/-/wechaty-grpc-1.5.2.tgz#27cbbe3d75c1cabdde75ec2fffc77482410e5411"
