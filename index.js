@@ -1,4 +1,3 @@
-const Wechaty = require('wechaty')
 const express = require('express')
 const axios = require('axios')
 const app = express()
@@ -41,6 +40,7 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/we', (req, res) => {
+  const Wechaty = require('wechaty')
   class weChaty {
     bot = null
     constructor() {
