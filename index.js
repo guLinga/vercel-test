@@ -40,40 +40,45 @@ app.get('/test', (req, res) => {
 })
 
 app.get('/we', (req, res) => {
-  const Wechaty = require('wechaty')
-  class weChaty {
-    bot = null
-    constructor() {
-      this.bot = Wechaty.WechatyBuilder.build({
-        name: 'wechat-assistant', // generate xxxx.memory-card.json and save login data for the next login
-        puppetOptions: {
-          uos: true,
-        },
-      })
-      this.bot.on('scan', (code) => {
-        const qrcodeImageUrl = `https://wechaty.js.org/qrcode/${encodeURIComponent(
-          code
-        )}`
-        res.send(qrcodeImageUrl)
-      })
-      this.bot.on('login', (user) => console.log(`User ${user} logged in`))
-      this.bot.on('message', this.onMessage.bind(this))
-    }
-    onMessage(message) {
-      const room = message.room()
-      if (
-        room &&
-        message.payload.roomId ===
-          '@@3028fee88f1f1dba1507039875d73c7f6448fd3c3759fb27b5d79fc97072af13'
-      ) {
-        room.say('你好')
+  try {
+    const Wechaty = require('wechaty')
+    console.log('Wechaty', Wechaty)
+    class weChaty {
+      bot = null
+      constructor() {
+        this.bot = Wechaty.WechatyBuilder.build({
+          name: 'wechat-assistant', // generate xxxx.memory-card.json and save login data for the next login
+          puppetOptions: {
+            uos: true,
+          },
+        })
+        this.bot.on('scan', (code) => {
+          const qrcodeImageUrl = `https://wechaty.js.org/qrcode/${encodeURIComponent(
+            code
+          )}`
+          res.send(qrcodeImageUrl)
+        })
+        this.bot.on('login', (user) => console.log(`User ${user} logged in`))
+        this.bot.on('message', this.onMessage.bind(this))
+      }
+      onMessage(message) {
+        const room = message.room()
+        if (
+          room &&
+          message.payload.roomId ===
+            '@@3028fee88f1f1dba1507039875d73c7f6448fd3c3759fb27b5d79fc97072af13'
+        ) {
+          room.say('你好')
+        }
+      }
+      run() {
+        this.bot.start()
       }
     }
-    run() {
-      this.bot.start()
-    }
+    new weChaty().run()
+  } catch (error) {
+    res.send(error)
   }
-  new weChaty().run()
 })
 
 app.listen(port, () => {
